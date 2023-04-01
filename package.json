@@ -1,0 +1,27 @@
+{
+  "name": "board-games-mern-full-stack-app",
+  "version": "1.0.0",
+  "description": "Welcome to a create-read-update-delete MERN full stack app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aubreyjonescreatives/board-games-mern-full-stack-app.git"
+  },
+  "keywords": [
+    "MERN",
+    "CRUD",
+    "React",
+    "Heroku",
+    "Happy",
+    "Coding"
+  ],
+  "author": "Aubrey Jones",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aubreyjonescreatives/board-games-mern-full-stack-app/issues"
+  },
+  "homepage": "https://github.com/aubreyjonescreatives/board-games-mern-full-stack-app#readme"
+}
