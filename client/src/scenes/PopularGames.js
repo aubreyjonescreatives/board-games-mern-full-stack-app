@@ -10,7 +10,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 //import LinkIcon from '@material-ui/icons/Link';
 //import LazyLoad from 'react-lazyload'
-import '../css/cardStyles.css';
 import { Formik } from 'formik' 
 import * as Yup from 'yup'
 import * as dotenv from 'dotenv'
