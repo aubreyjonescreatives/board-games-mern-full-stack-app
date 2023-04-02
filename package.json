@@ -5,6 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "postinstall": "cd client && npm install",
+    "launch": "cd graphql && npm run launchDocker",
+    "migrate": "cd graphql && npm run migrate",
+    "seed": "node seed/loadAPI.js",
+    "seed:crazygames": "node seed/loadAPICrazy.js",
+    "seed:game": "cd graphql && npm run seed:game",
     "start-dev": "concurrently --kill-others \"npm install && nodemon index.js\" \"cd client && npm install && npm run start\"",
     "test": "jest"
   },

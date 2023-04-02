@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import _ from 'lodash'
+//import _ from 'lodash'
 import {Card, IconButton, CardMedia, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
     DialogActions, TextField, Box, CardContent, Link} from '@mui/material'
@@ -12,11 +12,10 @@ import {Card, IconButton, CardMedia, Typography, Container,
 //import LazyLoad from 'react-lazyload'
 import { Formik } from 'formik' 
 import * as Yup from 'yup'
-import * as dotenv from 'dotenv'
 
 
 
-dotenv.config()
+
 const port = process.env.PORT || 3000
 
 
@@ -37,37 +36,48 @@ const Welcome = () => {
 const [selectedGame, setSelectedGame] = useState( { name: ''})
 const [gameData, setGameData] = useState([])
 const [crazygameData, setcrazyGameData] = useState([])
-const [debouncedName, setDebouncedName] = useState('')
+//const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 
+const [findWeatherData, setFindWeatherData] = useState({})
 
 
-
-const handleInput = (event) => {
-    debounce(event.target.value)
+const inputGame = (event, gameName) => {
+    if (event.key === 'Enter') {
+        setGameData(gameData.filter(game => game.name.includes(gameName)))
+        setcrazyGameData(crazygameData.filter(game => game.name.includes(gameName)))
+    }  else {
+        fetchGames()
+        fetchCrazyGames()
+    }
 }
 
 
-    const debounce = useCallback(
-        _.debounce((searchVal) => {
-            setDebouncedName(searchVal)
-        }, 1000), 
-        [],
-    )
+// const handleInput = (event) => {
+//     debounce(event.target.value)
+// }
+
+
+//     const debounce = useCallback(
+//         _.debounce((searchVal) => {
+//             setDebouncedName(searchVal)
+//         }, 1000), 
+//         [],
+//     )
 
     
 
 
-    const handleSearch = () => {
-        if (debouncedName) {
-            setGameData(gameData.filter(game => game.name.includes(debouncedName)))
-            setcrazyGameData(crazygameData.filter(game => game.name.includes(debouncedName)))
-        } else {
-            fetchGames()
-            fetchCrazyGames()
-        }
-    }
+    // const handleSearch = () => {
+    //     if (debouncedName) {
+    //         setGameData(gameData.filter(game => game.name.includes(debouncedName)))
+    //         setcrazyGameData(crazygameData.filter(game => game.name.includes(debouncedName)))
+    //     } else {
+    //         fetchGames()
+    //         fetchCrazyGames()
+    //     }
+    // }
 
 
 
@@ -241,8 +251,12 @@ return (
 
      <div className="actions">
              <form className="gamestatsSearch">
-         <TextField placeholder='Search for Game' onChange={handleInput} />
-         <IconButton aria-label='search' onClick={handleSearch}>
+         <TextField placeholder='Search for Game' 
+         onChange={event => setGameData(event.target.value)}
+         onKeyDown={inputGame}
+         type="text"
+          />
+         <IconButton aria-label='search' onClick={inputGame}>
              <SearchIcon />
              </IconButton>
      </form>

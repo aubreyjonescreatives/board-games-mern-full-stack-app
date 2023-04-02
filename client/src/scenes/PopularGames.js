@@ -12,11 +12,10 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 //import LazyLoad from 'react-lazyload'
 import { Formik } from 'formik' 
 import * as Yup from 'yup'
-import * as dotenv from 'dotenv'
 
 
 
-dotenv.config()
+
 const port = process.env.PORT || 3000
 
 
